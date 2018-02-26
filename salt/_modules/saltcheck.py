@@ -48,11 +48,13 @@ echo-test-hello:
 :maturity:      new
 '''
 from __future__ import absolute_import
+
 import logging
 import os
 import time
-from json import loads, dumps
 import yaml
+from json import loads, dumps
+
 try:
     import salt.utils
     import salt.client
@@ -255,6 +257,7 @@ def _get_state_sls(state):
         pass
     return sls_list_state
 
+
 def _refresh_saltcheck_tests_dir(dirpath):
     ''' equivalent to:
            rm -rf dest-dir
@@ -268,7 +271,6 @@ def _refresh_saltcheck_tests_dir(dirpath):
     state = os.path.join(*state)
 
     source = "salt://" + state
-    dest = dirpath
     __salt__['cp.get_dir'](source, dirpath)
     return
 
@@ -305,7 +307,7 @@ class SaltCheck(object):
              an expected return value - if assertion type requires it'''
         # 6 points needed for standard test
         # 4 points needed for test with assertion not requiring expected return
-        tots = 0  
+        tots = 0
         m_and_f = test_dict.get('module_and_function', None)
         assertion = test_dict.get('assertion', None)
         exp_ret_key = 'expected-return' in test_dict.keys()
@@ -318,7 +320,7 @@ class SaltCheck(object):
             required_total = 4
         else:
             required_total = 6
- 
+
         if m_and_f:
             tots += 1
             module, function = m_and_f.split('.')
@@ -333,18 +335,15 @@ class SaltCheck(object):
 
         if exp_ret_key:
             tots += 1
-            
-        if exp_ret_val != None:
+
+        if exp_ret_val is not None:
                 tots += 1
 
         # log the test score for debug purposes
         log.info("__test score: {}".format(tots))
         return tots >= required_total
 
-    def call_salt_command(self,
-                          fun,
-                          args,
-                          kwargs):
+    def call_salt_command(self, fun, args, kwargs):
         '''Generic call of salt Caller command'''
         value = False
         try:
@@ -573,7 +572,6 @@ class SaltCheck(object):
         except AssertionError as err:
             result = "Fail: " + str(err)
         return result
-
 
     @staticmethod
     def get_state_search_path_list():

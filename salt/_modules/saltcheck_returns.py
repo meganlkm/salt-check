@@ -17,6 +17,7 @@ def __virtual__():
     '''
     return __virtualname__
 
+
 ''' return types to support, all will have a default value:
     string
     int
@@ -27,7 +28,7 @@ def __virtual__():
     notempty - given string
     bool - True | False
 '''
-        
+
 
 def get_string(given_val="TestString"):
     '''
@@ -37,6 +38,7 @@ def get_string(given_val="TestString"):
         salt '*' saltcheck_returns.get_string 'some-value-here'
     '''
     return given_val
+
 
 def get_int(given_val=789):
     '''
@@ -51,6 +53,7 @@ def get_int(given_val=789):
         val = given_val
     return val
 
+
 def get_float(given_val=600.245):
     '''
     Return the given float
@@ -64,6 +67,7 @@ def get_float(given_val=600.245):
         val = given_val
     return val
 
+
 def get_list(given_val=['one', 'two', 'three']):
     '''
     Return the given list
@@ -73,7 +77,8 @@ def get_list(given_val=['one', 'two', 'three']):
     '''
     return given_val
 
-def get_dict(given_val={'one':1, 'two':2, 'three':3}):
+
+def get_dict(given_val={'one': 1, 'two': 2, 'three': 3}):
     '''
     Return the given dict
 
@@ -81,6 +86,7 @@ def get_dict(given_val={'one':1, 'two':2, 'three':3}):
         salt '*' saltcheck_returns.get_dict '{"a":12, "b":13, "c":14}'
     '''
     return given_val
+
 
 def get_empty():
     '''
@@ -90,6 +96,7 @@ def get_empty():
         salt '*' saltcheck_returns.get_empty'
     '''
     return
+
 
 def get_bool(given_val=True):
     '''
