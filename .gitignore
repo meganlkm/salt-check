@@ -8,3 +8,5 @@ Dockerfile.*_*
 ignore/
 .venv/
 tmp/
+
+salt/_modules
