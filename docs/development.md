@@ -1,4 +1,9 @@
+# Development
+
 To create a pip-installable version:
-git clone the repo
+
+```bash
+git clone the-repo
 cd into dir
 python setup.py sdist
+```
