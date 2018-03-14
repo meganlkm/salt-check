@@ -5,8 +5,8 @@ import unittest
 
 sys.path.append(os.path.abspath(sys.path[0]) + '/../')
 
-from salt_check import SaltCheck
-from salt_check import StateTestLoader
+from saltcheck import SaltCheck
+from saltcheck import StateTestLoader
 
 # Note: the order tests are run is arbitrary!
 

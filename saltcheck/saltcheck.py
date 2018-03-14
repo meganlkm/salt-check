@@ -56,9 +56,9 @@ import yaml
 from json import loads, dumps
 
 try:
-    import salt.utils
+    # import salt.utils
     import salt.client
-    import salt.exceptions
+    from salt.exceptions import SaltException
 except ImportError:
     pass
 
@@ -226,7 +226,7 @@ def _is_valid_function(module_name, function):
     '''Determine if a function is valid for a module'''
     try:
         functions = __salt__['sys.list_functions'](module_name)
-    except salt.exceptions.SaltException:
+    except SaltException:
         functions = ["unable to look up functions"]
     return "{0}.{1}".format(module_name, function) in functions
 
@@ -355,7 +355,7 @@ class SaltCheck(object):
                 value = self.salt_lc.cmd(fun, **kwargs)
             else:
                 value = self.salt_lc.cmd(fun)
-        except salt.exceptions.SaltException:
+        except SaltException:
             raise
         except Exception:
             raise
